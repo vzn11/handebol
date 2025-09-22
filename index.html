@@ -1,0 +1,546 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handebol Recreio da Juventude</title>
+    <style>
+        /* Variáveis de cores */
+        :root {
+            --cor-primaria: #00843D; /* Verde principal */
+            --cor-secundaria: #FFFFFF; /* Branco */
+            --cor-destaque: #004d24; /* Verde escuro */
+            --cor-texto: #333333;
+            --cor-texto-claro: #666666;
+        }
+
+        /* Reset e estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--cor-texto);
+            background-color: #f8f8f8;
+        }
+
+        /* Header e Navegação */
+        header {
+            background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-destaque) 100%);
+            color: var(--cor-secundaria);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: var(--cor-secundaria);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-left: 2rem;
+        }
+
+        .nav-link {
+            color: var(--cor-secundaria);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 132, 61, 0.9), rgba(0, 132, 61, 0.7)), url('https://www.recreiodajuventude.com.br/oficial/2023/userfiles/redacao/posts/handetitulo.png') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cor-secundaria);
+            text-align: center;
+            margin-top: 70px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--cor-secundaria);
+            color: var(--cor-primaria);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid var(--cor-secundaria);
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--cor-secundaria);
+        }
+
+        /* Seções */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--cor-primaria);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--cor-primaria);
+            margin: 1rem auto;
+        }
+
+        /* História */
+        .historia-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .historia-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .historia-image {
+            display: inline-block;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 540px;  /* Ajuste a largura como necessário */
+            height: 285px;
+        }
+
+        /* Títulos */
+        #titulos {
+            background-color: #f0f8f0;
+        }
+
+        .titulos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .titulo-card {
+            background: var(--cor-secundaria);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .titulo-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .titulo-ano {
+            font-size: 2rem;
+            color: var(--cor-primaria);
+            margin-bottom: 1rem;
+        }
+
+        /* Campeonatos */
+        .campeonatos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .campeonato-card {
+            background: var(--cor-secundaria);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--cor-primaria);
+        }
+
+        .campeonato-data {
+            color: var(--cor-primaria);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Matrícula */
+        #matricula {
+            background-color: #f0f8f0;
+        }
+
+        .matricula-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .requisitos {
+            background: var(--cor-secundaria);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .requisitos-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .requisitos-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .requisitos-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Contato */
+        .contato-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contato-info {
+            background: var(--cor-secundaria);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contato-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .contato-label {
+            font-weight: bold;
+            color: var(--cor-primaria);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--cor-destaque) 0%, var(--cor-primaria) 100%);
+            color: var(--cor-secundaria);
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .social-links {
+            margin: 1rem 0;
+        }
+
+        .social-link {
+            color: var(--cor-secundaria);
+            margin: 0 1rem;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-menu {
+                margin-top: 1rem;
+            }
+
+            .nav-item {
+                margin: 0 0.5rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .historia-content,
+            .contato-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">Handebol Recreio</a>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#historia" class="nav-link">História</a></li>
+                    <li class="nav-item"><a href="#titulos" class="nav-link">Títulos</a></li>
+                    <li class="nav-item"><a href="#campeonatos" class="nav-link">Campeonatos</a></li>
+                    <li class="nav-item"><a href="#matricula" class="nav-link">Matrícula</a></li>
+                    <li class="nav-item"><a href="#contato" class="nav-link">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="hero-title">Handebol Recreio da Juventude</h1>
+            <p class="hero-subtitle">Tradição, Paixão e Vitórias no Esporte Gaúcho</p>
+            <a href="#matricula" class="cta-button">Faça Parte do Time</a>
+        </div>
+    </section>
+
+    <!-- História -->
+    <section id="historia" class="container">
+        <h2 class="section-title">Nossa História</h2>
+        <div class="historia-content">
+            <div class="historia-text">
+                <p>O time de handebol do Recreio da Juventude tem uma trajetória marcada por dedicação, superação e muitas conquistas. Fundado em 1985, nosso time surgiu como uma iniciativa de jovens atletas apaixonados pelo esporte que buscavam representar com orgulho as cores verde e branco do clube.</p>
+                <p>Ao longo dos anos, construímos uma tradição sólida no handebol gaúcho, formando não apenas atletas talentosos, mas cidadãos comprometidos com valores como trabalho em equipe, respeito e disciplina. Nossa filosofia vai além das quadras - estamos comprometidos com o desenvolvimento integral dos nossos atletas.</p>
+                <p>Hoje, somos referência no handebol regional, com categorias de base que alimentam nosso time principal e contribuem para o crescimento constante do esporte em nossa comunidade.</p>
+            </div>
+            <div class="historia-image">
+                <img src="jj.png" alt="Time de handebol" width="550">
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Títulos -->
+    <section id="titulos">
+        <div class="container">
+            <h2 class="section-title">Nossos Títulos Dos Ultimos Anos</h2>
+            <div class="titulos-grid">
+                <div class="titulo-card">
+                    <h3 class="titulo-ano">2025</h3>
+                    <p>Campeão Estadual  Masculino</p>
+                    <p>Vice-campeão Arujá Cup Juvenil</p>
+                </div>
+                <div class="titulo-card">
+                    <h3 class="titulo-ano">2024</h3>
+                    <p>Vice-campeão Arujá Cup Juvenil</p>
+                    <p>Campeão Estadual Cadete e Infantil Masculino</p>
+                </div>
+                <div class="titulo-card">
+                    <h3 class="titulo-ano">2023</h3>
+                    <p>Terceiro Colocado Arujá Cup</p>
+                    <p>Tricampeão Gaucho Juvenil Masculino</p>
+                    <p>Campeão Estadual Master Masculino</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campeonatos -->
+    <section id="campeonatos" class="container">
+        <h2 class="section-title">Próximos Campeonatos</h2>
+        <div class="campeonatos-grid">
+            <div class="campeonato-card">
+                <div class="campeonato-data">15/03/2024 - 10:00</div>
+                <h3>Campeonato Estadual 2025 Juvenil</h3>
+                <p>Segunda Fase - Jogos contra: Talentos, Handaction, Capão da Canoa</p>
+                <p>Local: Ginásio do Handaction</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Matrícula -->
+    <section id="matricula">
+        <div class="container">
+            <h2 class="section-title">Como se Matricular</h2>
+            <div class="matricula-content">
+                <div class="requisitos">
+                    <h3>Processo de Matrícula</h3>
+                    <p>1. Matrículas são feitas pelo aplicativo do associado.</p>
+                    <p>2. Se quiser solicitar uma bolsa de atleta, entre em contato.</p>
+                </div>
+
+                <div class="requisitos">
+                    <h3>Horários de Treino</h3>
+                    <p>🕒 Segunda: Mirim, Mini Mirim, Infantil, Cadete e Juvenil</p>
+                    <p>🕒 Terça: Todas as categorias</p>
+                    <p>🕒 Quarta: Mirim, Mini Mirim, Infantil e Cadete</p>
+                    <p>🕒 Quinta: Todas as categorias</p>
+                    <p>🕒 Sexta: Mirim, Mini Mirim e Infantil</p>
+                    <p>📍 Local: Ginásio do Recreio da Juventude</p>
+                    <p>📞 Para mais informações sobre horários, entre em contato.</p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato" class="container">
+        <h2 class="section-title">Entre em Contato</h2>
+        <div class="contato-grid">
+            <div class="contato-info">
+                <h3>Informações de Contato</h3>
+                <div class="contato-item">
+                    <div class="contato-label">Endereço</div>
+                    <p>Rua Atílio Andreazza, 3525 Bairro Sagrada Família<br>Caxias do Sul - RS</p>
+                </div>
+                <div class="contato-item">
+                    <div class="contato-label">Telefone</div>
+                    <p>(54) 3022 3500</p>
+                </div>
+                <div class="contato-item">
+                    <div class="contato-label">Email</div>
+                    <p>handebol@recreiodajuventude.com.br</p>
+                </div>
+                <div class="contato-item">
+                    <div class="contato-label">Horário de Atendimento</div>
+                    <p>Segunda a Sexta: 8:15h às 18h</p>
+                    <p>Sábado: 8:15h às 12h</p>
+                    <p>Domingo: Fechado</p>
+                </div>
+            </div>
+            <div class="contato-info">
+                <h3>Localização</h3>
+                <div style="width: 100%; height: 350px; background: #f0f0f0; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6969.51882319971!2d-51.1590443!3d-29.1422859!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x951ebd187ae33ab5%3A0x3877458d5818ac7a!2sRecreio%20da%20Juventude%20-%20Sede%20Juventude!5e0!3m2!1spt-BR!2sbr!4v1757352323096!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <h3>Handebol Recreio da Juventude</h3>
+            <p>Tradição e Excelência no Esporte Gaúcho</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/RecreioDaJuventude/?locale=pt_BR" target="_blank" rel="noopener noreferrer" style="color: white; text-decoration: none; cursor: default;">
+                    Facebook
+                </a>
+                <a href="https://www.instagram.com/handebol.recreio" target="_blank" rel="noopener noreferrer" style="color: white; text-decoration: none; cursor: default;">
+                    Instagram   
+                </a>
+                               
+                <a href="https://www.tiktok.com/@recreiodajuventude" target="_blank" rel="noopener noreferrer" style="color: white; text-decoration: none; cursor: default;">
+                    TikTok            
+                </a>
+                </div>
+            <p>© 2025 Handebol Recreio da Juventude. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll para links de navegação
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                const offsetTop = targetElement.offsetTop - 80; // Ajuste para o header fixo
+                
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Efeito de highlight na navegação ao scrollar
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.style.backgroundColor = '';
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+```
+
