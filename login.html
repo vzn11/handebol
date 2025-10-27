@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#16a34a",
+                        "background-light": "#f3f4f6",
+                        "background-dark": "#1f2937",
+                        "card-light": "#ffffff",
+                        "card-dark": "#374151",
+                        "text-light": "#111827",
+                        "text-dark": "#f9fafb",
+                        "subtle-light": "#6b7280",
+                        "subtle-dark": "#9ca3af",
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        DEFAULT: '0.5rem',
+                    },
+                },
+            },
+        };
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-sans flex items-center justify-center min-h-screen">
+<div class="container mx-auto p-4 max-w-lg">
+<div class="bg-card-light dark:bg-card-dark shadow-lg rounded-lg overflow-hidden">
+<div class="flex">
+<button class="w-1/2 p-4 text-center font-semibold text-text-light dark:text-text-dark bg-card-light dark:bg-card-dark border-b-2 border-primary" id="login-tab">Login</button>
+<button class="w-1/2 p-4 text-center font-semibold text-subtle-light dark:text-subtle-dark bg-gray-100 dark:bg-gray-700" id="register-tab">Cadastro</button>
+</div>
+<div class="p-8" id="login-form">
+<h2 class="text-2xl font-bold text-text-light dark:text-text-dark text-center mb-6">Acesse sua Conta</h2>
+<form>
+<div class="mb-4">
+<label class="block text-sm font-medium text-subtle-light dark:text-subtle-dark mb-1" for="login-email">Email</label>
+<input class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark focus:ring-primary focus:border-primary" id="login-email" placeholder="seuemail@exemplo.com" type="email"/>
+</div>
+<div class="mb-6">
+<label class="block text-sm font-medium text-subtle-light dark:text-subtle-dark mb-1" for="login-password">Senha</label>
+<input class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark focus:ring-primary focus:border-primary" id="login-password" placeholder="********" type="password"/>
+</div>
+<button class="w-full bg-primary text-white py-2 rounded-lg font-semibold hover:bg-green-700 transition duration-300" type="submit">Entrar</button>
+</form>
+</div>
+<div class="p-8 hidden" id="register-form">
+<h2 class="text-2xl font-bold text-text-light dark:text-text-dark text-center mb-6">Crie sua Conta</h2>
+<form>
+<div class="mb-4">
+<label class="block text-sm font-medium text-subtle-light dark:text-subtle-dark mb-1" for="register-name">Nome</label>
+<input class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark focus:ring-primary focus:border-primary" id="register-name" placeholder="Seu nome" type="text"/>
+</div>
+<div class="mb-4">
+<label class="block text-sm font-medium text-subtle-light dark:text-subtle-dark mb-1" for="register-email">Email</label>
+<input class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark focus:ring-primary focus:border-primary" id="register-email" placeholder="seuemail@exemplo.com" type="email"/>
+</div>
+<div class="mb-4">
+<label class="block text-sm font-medium text-subtle-light dark:text-subtle-dark mb-1" for="register-password">Senha</label>
+<input class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark focus:ring-primary focus:border-primary" id="register-password" placeholder="Crie uma senha forte" type="password"/>
+</div>
+<div class="mb-6">
+<label class="block text-sm font-medium text-subtle-light dark:text-subtle-dark mb-1" for="register-confirm-password">Confirmar Senha</label>
+<input class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark focus:ring-primary focus:border-primary" id="register-confirm-password" placeholder="Confirme sua senha" type="password"/>
+</div>
+<button class="w-full bg-primary text-white py-2 rounded-lg font-semibold hover:bg-green-700 transition duration-300" type="submit">Cadastrar</button>
+</form>
+</div>
+</div>
+</div>
+<script>
+        const loginTab = document.getElementById('login-tab');
+        const registerTab = document.getElementById('register-tab');
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+        loginTab.addEventListener('click', () => {
+            loginTab.classList.add('border-primary', 'bg-card-light', 'dark:bg-card-dark', 'text-text-light', 'dark:text-text-dark');
+            loginTab.classList.remove('bg-gray-100', 'dark:bg-gray-700', 'text-subtle-light', 'dark:text-subtle-dark', 'border-transparent');
+            registerTab.classList.add('bg-gray-100', 'dark:bg-gray-700', 'text-subtle-light', 'dark:text-subtle-dark', 'border-transparent');
+            registerTab.classList.remove('border-primary', 'bg-card-light', 'dark:bg-card-dark', 'text-text-light', 'dark:text-text-dark');
+            loginForm.classList.remove('hidden');
+            registerForm.classList.add('hidden');
+        });
+        registerTab.addEventListener('click', () => {
+            registerTab.classList.add('border-primary', 'bg-card-light', 'dark:bg-card-dark', 'text-text-light', 'dark:text-text-dark');
+            registerTab.classList.remove('bg-gray-100', 'dark:bg-gray-700', 'text-subtle-light', 'dark:text-subtle-dark', 'border-transparent');
+            loginTab.classList.add('bg-gray-100', 'dark:bg-gray-700', 'text-subtle-light', 'dark:text-subtle-dark', 'border-transparent');
+            loginTab.classList.remove('border-primary', 'bg-card-light', 'dark:bg-card-dark', 'text-text-light', 'dark:text-text-dark');
+            registerForm.classList.remove('hidden');
+            loginForm.classList.add('hidden');
+        });
+    </script>
+    <script src = firebaseconfig.js> </script>
+    <script src = login.js> </script>
+</body></html>
