@@ -1,25 +1,34 @@
-function cadastrar(event) {
-    event.preventDefault();
+const registerForm = document.querySelector("#register-form form");
 
-    const nome = document.getElementById('register-name').value;
-    const email = document.getElementById('register-email').value;
-    const senha = document.getElementById('register-password').value;
+registerForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
+    const name = document.getElementById("register-name").value.trim();
+    const email = document.getElementById("register-email").value.trim();
+    const password = document.getElementById("register-password").value;
+    const confirmPassword = document.getElementById("register-confirm-password").value;
 
+    if (!name || !email || !password || !confirmPassword) {
+        alert("Por favor, preencha todos os campos.");
+        return;
+    }
 
-    novoUsuario = {
-        nome: nome,
-        email: email,
-        senha: senha
-    };
+    if (password !== confirmPassword) {
+        alert("As senhas não coincidem!");
+        return;
+    }
 
-    db.ref('usuarios').push(novoUsuario)
-        .then(() => {
-            alert('Usuário cadastrado com sucesso!');
-            document.getElementById('register-name').value = "";
-            document.getElementById('register-email').value = "";
-            document.getElementById('register-password').value = "";
-        })
+    try {
+        const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
+        const user = userCredential.user;
 
+        await user.updateProfile({ displayName: name });
 
-}
+        alert("Cadastro realizado com sucesso!");
+        window.location.href = "index.html";
+
+    } catch (error) {
+        alert("Erro Firebase: " + error.message);
+        console.log(error);
+    }
+});

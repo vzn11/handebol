@@ -3,6 +3,9 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Login</title>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
 <script>
         tailwind.config = {
@@ -78,27 +81,15 @@
 </div>
 </div>
 <script>
-        const loginTab = document.getElementById('login-tab');
-        const registerTab = document.getElementById('register-tab');
-        const loginForm = document.getElementById('login-form');
-        const registerForm = document.getElementById('register-form');
-        loginTab.addEventListener('click', () => {
-            loginTab.classList.add('border-primary', 'bg-card-light', 'dark:bg-card-dark', 'text-text-light', 'dark:text-text-dark');
-            loginTab.classList.remove('bg-gray-100', 'dark:bg-gray-700', 'text-subtle-light', 'dark:text-subtle-dark', 'border-transparent');
-            registerTab.classList.add('bg-gray-100', 'dark:bg-gray-700', 'text-subtle-light', 'dark:text-subtle-dark', 'border-transparent');
-            registerTab.classList.remove('border-primary', 'bg-card-light', 'dark:bg-card-dark', 'text-text-light', 'dark:text-text-dark');
-            loginForm.classList.remove('hidden');
-            registerForm.classList.add('hidden');
-        });
-        registerTab.addEventListener('click', () => {
-            registerTab.classList.add('border-primary', 'bg-card-light', 'dark:bg-card-dark', 'text-text-light', 'dark:text-text-dark');
-            registerTab.classList.remove('bg-gray-100', 'dark:bg-gray-700', 'text-subtle-light', 'dark:text-subtle-dark', 'border-transparent');
-            loginTab.classList.add('bg-gray-100', 'dark:bg-gray-700', 'text-subtle-light', 'dark:text-subtle-dark', 'border-transparent');
-            loginTab.classList.remove('border-primary', 'bg-card-light', 'dark:bg-card-dark', 'text-text-light', 'dark:text-text-dark');
-            registerForm.classList.remove('hidden');
-            loginForm.classList.add('hidden');
-        });
+    const registerTab = document.getElementById('register-tab');
+
+    registerTab.addEventListener('click', () => {
+        window.location.href = "cadastro.html";
+    });
+</script>
+
+
     </script>
-    <script src = firebaseconfig.js> </script>
-    <script src = login.js> </script>
+    <script src = "firebaseconfig.js"> </script>
+    <script src = "login.js"></script>
 </body></html>

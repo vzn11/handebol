@@ -78,35 +78,16 @@
     </div>
     </div>
     <script>
-        const loginTab = document.getElementById('login-tab');
-        const registerTab = document.getElementById('register-tab');
-        const loginForm = document.getElementById('login-form');
-        const registerForm = document.getElementById('register-form');
-        function showLogin() {
-            loginTab.classList.add('border-primary', 'bg-card-light', 'dark:bg-card-dark', 'text-text-light', 'dark:text-text-dark');
-            loginTab.classList.remove('bg-gray-100', 'dark:bg-gray-700', 'text-subtle-light', 'dark:text-subtle-dark');
-            registerTab.classList.add('bg-gray-100', 'dark:bg-gray-700', 'text-subtle-light', 'dark:text-subtle-dark');
-            registerTab.classList.remove('border-primary', 'bg-card-light', 'dark:bg-card-dark', 'text-text-light', 'dark:text-text-dark');
-            loginForm.classList.remove('hidden');
-            registerForm.classList.add('hidden');
-        }
-        function showRegister() {
-            registerTab.classList.add('border-primary', 'bg-card-light', 'dark:bg-card-dark', 'text-text-light', 'dark:text-text-dark');
-            registerTab.classList.remove('bg-gray-100', 'dark:bg-gray-700', 'text-subtle-light', 'dark:text-subtle-dark');
-            loginTab.classList.add('bg-gray-100', 'dark:bg-gray-700', 'text-subtle-light', 'dark:text-subtle-dark');
-            loginTab.classList.remove('border-primary', 'bg-card-light', 'dark:bg-card-dark', 'text-text-light', 'dark:text-text-dark');
-            registerForm.classList.remove('hidden');
-            loginForm.classList.add('hidden');
-        }
-        loginTab.addEventListener('click', showLogin);
-        registerTab.addEventListener('click', showRegister);
-        // Initially show register form as per the user request.
-        showRegister();
+        const registerTab = document.getElementById('login-tab');
+    
+        registerTab.addEventListener('click', () => {
+            window.location.href = "login.html";
+        });
     </script>
     <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
-
-    <script src="firebaseconfig.js"></script>
-    <script src="cadastro.js"></script>
+    <script src= "firebaseconfig.js"></script>
+    <script src= "cadastro.js"></script>
 </body>
 </html>
